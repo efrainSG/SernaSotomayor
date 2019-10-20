@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SernaSis.SernaSotomayor.WCF", "SernaSis.SernaSotomayor.WCF\", "{01ABA64B-D3FB-4A63-9B13-68A1829A7246}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		ProjectReferences = "{783d8c06-e616-4fbb-8d70-941a36a929a7}|Sernasis.SernaSotomayor.WCF.Contratos.dll;{becde6ef-e400-4f6e-a7b0-76ee75bd70bc}|Sernasis.SernaSotomayor.WCF.Implement.dll;{B752772A-A832-4100-AC94-46D0D71161CE}|Sernasis.SernaSotomayor.ORM.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_23704"
+		Debug.AspNetCompiler.PhysicalPath = "SernaSis.SernaSotomayor.WCF\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_23704\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_23704"
+		Release.AspNetCompiler.PhysicalPath = "SernaSis.SernaSotomayor.WCF\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_23704\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "23704"
+		SlnRelativePath = "SernaSis.SernaSotomayor.WCF\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sernasis.SernaSotomayor.WCF.Contract", "Sernasis.SernaSotomayor.WCF.Contratos\Sernasis.SernaSotomayor.WCF.Contract.csproj", "{783D8C06-E616-4FBB-8D70-941A36A929A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sernasis.SernaSotomayor.WCF.Implement", "Sernasis.SernaSotomayor.WCF.Implement\Sernasis.SernaSotomayor.WCF.Implement.csproj", "{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sernasis.SernaSotomayor.ORM", "..\SernaSis.SernaSotomayor\Sernasis.SernaSotomayor.ORM\Sernasis.SernaSotomayor.ORM.csproj", "{B752772A-A832-4100-AC94-46D0D71161CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Infraestructura", "0. Infraestructura", "{B6EF0E5E-0FF4-4DDA-B479-55D503F7787C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Servicios", "1. Servicios", "{734BDB00-6085-4250-8595-684D67411755}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Presentaciones", "2. Presentaciones", "{ABE9A66B-26DD-4E82-8860-085B184347CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMSernaSotomayor", "..\UMSernaSotomayor\UMSernaSotomayor.csproj", "{E7B779C2-4C50-4DDB-AF2B-81412322930A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01ABA64B-D3FB-4A63-9B13-68A1829A7246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01ABA64B-D3FB-4A63-9B13-68A1829A7246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01ABA64B-D3FB-4A63-9B13-68A1829A7246}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{01ABA64B-D3FB-4A63-9B13-68A1829A7246}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{783D8C06-E616-4FBB-8D70-941A36A929A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{783D8C06-E616-4FBB-8D70-941A36A929A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{783D8C06-E616-4FBB-8D70-941A36A929A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{783D8C06-E616-4FBB-8D70-941A36A929A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B752772A-A832-4100-AC94-46D0D71161CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B752772A-A832-4100-AC94-46D0D71161CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B752772A-A832-4100-AC94-46D0D71161CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B752772A-A832-4100-AC94-46D0D71161CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01ABA64B-D3FB-4A63-9B13-68A1829A7246} = {734BDB00-6085-4250-8595-684D67411755}
+		{783D8C06-E616-4FBB-8D70-941A36A929A7} = {734BDB00-6085-4250-8595-684D67411755}
+		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC} = {734BDB00-6085-4250-8595-684D67411755}
+		{B752772A-A832-4100-AC94-46D0D71161CE} = {B6EF0E5E-0FF4-4DDA-B479-55D503F7787C}
+		{E7B779C2-4C50-4DDB-AF2B-81412322930A} = {ABE9A66B-26DD-4E82-8860-085B184347CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB6233EE-86AE-472F-B4B3-7C9E85359621}
+	EndGlobalSection
+EndGlobal
