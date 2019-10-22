@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}</ProjectGuid>
+    <ProjectGuid>{4D3DC2B9-5515-4746-89F4-932B373F47AF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>UMSS_Monitor</RootNamespace>
     <AssemblyName>UMSS_Monitor</AssemblyName>
@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MonitorPpal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,8 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MonitorPpal.xaml.cs">
+      <DependentUpon>MonitorPpal.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

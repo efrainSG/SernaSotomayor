@@ -10,7 +10,7 @@
   <!-- Iniciar la configuración básica: metadatos de complemento que se usan para todas las versiones de Office a menos que se proporcione un reemplazo. -->
 
   <!-- IMPORTANTE: El identificador debe ser único para el complemento. Si reutiliza este manifiesto, asegúrese de que cambia este identificador a un nuevo GUID. -->
-  <Id>f121f3dd-86c2-43a1-9133-db6686c63664</Id>
+  <Id>499466be-9977-42ed-a026-9db2a00b0366</Id>
 
   <!--Versión. Las actualizaciones de la tienda solo se desencadenan si hay un cambio de versión. -->
   <Version>1.0.0.0</Version>
