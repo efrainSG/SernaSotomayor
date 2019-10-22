@@ -59,6 +59,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.IdentityModel.Services" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +75,21 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UMSSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UMSSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UMSSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UMSSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UMSSModel.edmx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\DatosDemo.sql" />
@@ -81,10 +102,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>UMSernaSotomayor.mdf</DependentUpon>
     </Content>
+    <Content Include="UMSSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UMSSModel.edmx</DependentUpon>
+      <LastGenOutput>UMSSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="UMSSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UMSSModel.edmx</DependentUpon>
+      <LastGenOutput>UMSSModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="UMSSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UMSSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="UMSSModel.edmx.diagram">
+      <DependentUpon>UMSSModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

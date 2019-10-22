@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{af687244-b700-40c6-bd18-542eb2f9fba2}</ProjectGuid>
+    <ProjectGuid>{AF687244-B700-40C6-BD18-542EB2F9FBA2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UMSS_Outlook</RootNamespace>
@@ -41,8 +41,25 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
-  
-  <ItemGroup>     <None Include="UMSS_OutlookManifest\SharePointProjectItem.spdata">       <SharePointProjectItemId>{299bb4c3-d9ea-41bd-9953-b92e867576d1}</SharePointProjectItemId>     </None>     <Content Include="UMSS_OutlookManifest\UMSS_Outlook.xml" >       <OpcRelationship>manifest-oemanifest</OpcRelationship>     </Content>   </ItemGroup>
+  <ItemGroup>
+    <None Include="UMSS_OutlookManifest\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{299bb4c3-d9ea-41bd-9953-b92e867576d1}</SharePointProjectItemId>
+    </None>
+    <Content Include="UMSS_OutlookManifest\UMSS_Outlook.xml">
+      <OpcRelationship>manifest-oemanifest</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UMSS_OutlookWeb\UMSS_OutlookWeb.csproj">
+      <Project>{020FE256-D293-44A2-8609-33315084B337}</Project>
+      <Name>UMSS_OutlookWeb</Name>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <OutputItemType>SharePointWebProjectOutput</OutputItemType>
+      <RoleName>UMSS_OutlookWeb</RoleName>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
