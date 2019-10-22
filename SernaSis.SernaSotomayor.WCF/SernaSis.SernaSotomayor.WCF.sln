@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Presentaciones", "2. Pre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMSernaSotomayor", "..\UMSernaSotomayor\UMSernaSotomayor.csproj", "{E7B779C2-4C50-4DDB-AF2B-81412322930A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMSS_Monitor", "UMSS_Monitor\UMSS_Monitor.csproj", "{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7B779C2-4C50-4DDB-AF2B-81412322930A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BEE9B3-CCD6-4311-825E-7FBC86BC6603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{BECDE6EF-E400-4F6E-A7B0-76EE75BD70BC} = {734BDB00-6085-4250-8595-684D67411755}
 		{B752772A-A832-4100-AC94-46D0D71161CE} = {B6EF0E5E-0FF4-4DDA-B479-55D503F7787C}
 		{E7B779C2-4C50-4DDB-AF2B-81412322930A} = {ABE9A66B-26DD-4E82-8860-085B184347CE}
+		{33BEE9B3-CCD6-4311-825E-7FBC86BC6603} = {ABE9A66B-26DD-4E82-8860-085B184347CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB6233EE-86AE-472F-B4B3-7C9E85359621}
