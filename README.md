@@ -8,4 +8,4 @@ Arquitectura: WCF + MVC + DDD
 
 Dominios: Administrativo, Paciente, Médico, Administrador de sistema
 
-20191021: Agregado de proyectos
+20191021: Agregado de los proyectos WPF de monitor, Plugin de outlook, pruebas unitarias, Assembler
