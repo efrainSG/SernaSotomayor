@@ -73,8 +73,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adiccione.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Alergia.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AntecedentesGinecoObstetricio.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AntecedentesHereditario.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AntecedentesPersonalesPatológicos.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogo.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Paciente.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Persona.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonaCatalogo.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonaLugare.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonaTelefono.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tipo.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ubicacion.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UMSSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

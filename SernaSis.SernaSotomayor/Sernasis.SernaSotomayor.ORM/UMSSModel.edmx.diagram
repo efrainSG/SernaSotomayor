@@ -4,7 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="29a0fad222f148b7b9b007b7a4101148" Name="Diagram1" />
+      <Diagram DiagramId="29a0fad222f148b7b9b007b7a4101148" Name="Diagram1" ZoomLevel="55" >
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Adiccione" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Alergia" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Persona" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.PersonaTelefono" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Catalogo" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Tipo" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Ubicacion" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.AntecedentesHereditario" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Paciente" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.PersonaCatalogo" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.PersonaLugare" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.HistoriaClinica" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.MedicacionActual" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.ExploracionFisica" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.InterrogatorioAparatosSistema" Width="1.5" PointX="6.75" PointY="9.75" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_tipo_catalogo" />
+        <AssociationConnector Association="UMSernaSotomayorModel.PersonaCatalogo1" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_persona_personacatalogo" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

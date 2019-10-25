@@ -4,20 +4,759 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UMSernaSotomayorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="UMSernaSotomayorModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="UMSernaSotomayorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adicciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Adicción" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alergias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Alergia" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Domicilio" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Rh" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ocupación" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nacimiento" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonaCatalogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdCatalogo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.Administracion.PersonaLugares' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PersonaLugares">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="IdTipo" />
+            <PropertyRef Name="IdUbicacion" />
+          </Key>
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="IdUbicacion" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="PersonaTelefonos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Catalogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Abreviatura" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Lada" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesGinecoObstetricios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdHistoria" Type="int" Nullable="false" />
+          <Property Name="FUR" Type="date" />
+          <Property Name="Papanicolaou" Type="date" />
+          <Property Name="Mastografia" Type="date" />
+          <Property Name="IdCatalogo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.HistoriaClinica.ExploracionFisica' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ExploracionFisica">
+          <Key>
+            <PropertyRef Name="IdHistoria" />
+            <PropertyRef Name="TA" />
+          </Key>
+          <Property Name="IdHistoria" Type="int" Nullable="false" />
+          <Property Name="TA" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pulso" Type="int" />
+          <Property Name="FR" Type="int" />
+          <Property Name="FC" Type="int" />
+          <Property Name="Temp" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Estatura" Type="int" />
+          <Property Name="Peso" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Texto" Type="text" />
+        </EntityType>
+        <EntityType Name="HistoriaClinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMédico" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Tabaquitico" Type="bit" Nullable="false" />
+          <Property Name="Alcoholico" Type="bit" Nullable="false" />
+          <Property Name="PadecimientoActual" Type="text" Nullable="false" />
+          <Property Name="Analisis" Type="text" Nullable="false" />
+          <Property Name="ImpresionDiagnostica" Type="text" Nullable="false" />
+          <Property Name="PlanTerapeutico" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.HistoriaClinica.InterrogatorioAparatosSistemas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="InterrogatorioAparatosSistemas">
+          <Key>
+            <PropertyRef Name="IdHistoria" />
+            <PropertyRef Name="IdCatalogo" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="IdHistoria" Type="int" Nullable="false" />
+          <Property Name="IdCatalogo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MedicacionActual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdHistoria" Type="int" Nullable="false" />
+          <Property Name="Medicamento" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dosis" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Inicio" Type="date" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.Paciente.AntecedentesGinecoObstetricios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="AntecedentesGinecoObstetricios1">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="G" />
+            <PropertyRef Name="P" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="A" />
+          </Key>
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Menarca" Type="date" />
+          <Property Name="G" Type="tinyint" Nullable="false" />
+          <Property Name="P" Type="tinyint" Nullable="false" />
+          <Property Name="C" Type="tinyint" Nullable="false" />
+          <Property Name="A" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesHereditarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdCatalogo" Type="int" Nullable="false" />
+          <Property Name="Padecimiento" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesPersonalesPatológicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="Enfermedad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Inicio" Type="date" Nullable="false" />
+          <Property Name="IdCatalogo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_catalogo_personacatalogo">
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+          <End Role="PersonaCatalogo" Type="Self.PersonaCatalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaCatalogo">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_persona_personacatalogo">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="PersonaCatalogo" Type="Self.PersonaCatalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaCatalogo">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo_catalogo">
+          <End Role="Tipo" Type="Self.Tipo" Multiplicity="1" />
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Catalogo">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UMSernaSotomayorModelStoreContainer">
+          <EntitySet Name="Adicciones" EntityType="Self.Adicciones" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="PersonaCatalogo" EntityType="Self.PersonaCatalogo" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="PersonaTelefonos" EntityType="Self.PersonaTelefonos" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="Catalogo" EntityType="Self.Catalogo" Schema="Configuracion" store:Type="Tables" />
+          <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="Configuracion" store:Type="Tables" />
+          <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="Configuracion" store:Type="Tables" />
+          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="Self.AntecedentesGinecoObstetricios" Schema="HistoriaClinica" store:Type="Tables" />
+          <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="HistoriaClinica" store:Type="Tables" />
+          <EntitySet Name="MedicacionActual" EntityType="Self.MedicacionActual" Schema="HistoriaClinica" store:Type="Tables" />
+          <EntitySet Name="AntecedentesHereditarios" EntityType="Self.AntecedentesHereditarios" Schema="Paciente" store:Type="Tables" />
+          <EntitySet Name="AntecedentesPersonalesPatológicos" EntityType="Self.AntecedentesPersonalesPatológicos" Schema="Paciente" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="Paciente" store:Type="Tables" />
+          <EntitySet Name="PersonaLugares" EntityType="Self.PersonaLugares" store:Type="Tables" store:Schema="Administracion">
+            <DefiningQuery>SELECT 
+    [PersonaLugares].[IdPersona] AS [IdPersona], 
+    [PersonaLugares].[IdTipo] AS [IdTipo], 
+    [PersonaLugares].[IdUbicacion] AS [IdUbicacion], 
+    [PersonaLugares].[Fecha] AS [Fecha]
+    FROM [Administracion].[PersonaLugares] AS [PersonaLugares]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExploracionFisica" EntityType="Self.ExploracionFisica" store:Type="Tables" store:Schema="HistoriaClinica">
+            <DefiningQuery>SELECT 
+    [ExploracionFisica].[IdHistoria] AS [IdHistoria], 
+    [ExploracionFisica].[TA] AS [TA], 
+    [ExploracionFisica].[Pulso] AS [Pulso], 
+    [ExploracionFisica].[FR] AS [FR], 
+    [ExploracionFisica].[FC] AS [FC], 
+    [ExploracionFisica].[Temp] AS [Temp], 
+    [ExploracionFisica].[Estatura] AS [Estatura], 
+    [ExploracionFisica].[Peso] AS [Peso], 
+    [ExploracionFisica].[Texto] AS [Texto]
+    FROM [HistoriaClinica].[ExploracionFisica] AS [ExploracionFisica]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="InterrogatorioAparatosSistemas" EntityType="Self.InterrogatorioAparatosSistemas" store:Type="Tables" store:Schema="HistoriaClinica">
+            <DefiningQuery>SELECT 
+    [InterrogatorioAparatosSistemas].[IdHistoria] AS [IdHistoria], 
+    [InterrogatorioAparatosSistemas].[IdCatalogo] AS [IdCatalogo], 
+    [InterrogatorioAparatosSistemas].[Descripcion] AS [Descripcion]
+    FROM [HistoriaClinica].[InterrogatorioAparatosSistemas] AS [InterrogatorioAparatosSistemas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AntecedentesGinecoObstetricios1" EntityType="Self.AntecedentesGinecoObstetricios1" store:Type="Tables" store:Schema="Paciente" store:Name="AntecedentesGinecoObstetricios">
+            <DefiningQuery>SELECT 
+    [AntecedentesGinecoObstetricios1].[IdPersona] AS [IdPersona], 
+    [AntecedentesGinecoObstetricios1].[Menarca] AS [Menarca], 
+    [AntecedentesGinecoObstetricios1].[G] AS [G], 
+    [AntecedentesGinecoObstetricios1].[P] AS [P], 
+    [AntecedentesGinecoObstetricios1].[C] AS [C], 
+    [AntecedentesGinecoObstetricios1].[A] AS [A]
+    FROM [Paciente].[AntecedentesGinecoObstetricios] AS [AntecedentesGinecoObstetricios1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_catalogo_personacatalogo" Association="Self.fk_catalogo_personacatalogo">
+            <End Role="Catalogo" EntitySet="Catalogo" />
+            <End Role="PersonaCatalogo" EntitySet="PersonaCatalogo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_persona_personacatalogo" Association="Self.fk_persona_personacatalogo">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="PersonaCatalogo" EntitySet="PersonaCatalogo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo_catalogo" Association="Self.fk_tipo_catalogo">
+            <End Role="Tipo" EntitySet="Tipo" />
+            <End Role="Catalogo" EntitySet="Catalogo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UMSernaSotomayorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="UMSernaSotomayorEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="UMSernaSotomayorEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Adicciones" EntityType="UMSernaSotomayorModel.Adiccione" />
+          <EntitySet Name="Alergias" EntityType="UMSernaSotomayorModel.Alergia" />
+          <EntitySet Name="Personas" EntityType="UMSernaSotomayorModel.Persona" />
+          <EntitySet Name="PersonaTelefonos" EntityType="UMSernaSotomayorModel.PersonaTelefono" />
+          <EntitySet Name="Catalogoes" EntityType="UMSernaSotomayorModel.Catalogo" />
+          <EntitySet Name="Tipoes" EntityType="UMSernaSotomayorModel.Tipo" />
+          <EntitySet Name="Ubicacions" EntityType="UMSernaSotomayorModel.Ubicacion" />
+          <EntitySet Name="AntecedentesHereditarios" EntityType="UMSernaSotomayorModel.AntecedentesHereditario" />
+          <EntitySet Name="AntecedentesPersonalesPatológicos" EntityType="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" />
+          <EntitySet Name="Pacientes" EntityType="UMSernaSotomayorModel.Paciente" />
+          <EntitySet Name="PersonaCatalogoes" EntityType="UMSernaSotomayorModel.PersonaCatalogo" />
+          <EntitySet Name="PersonaLugares" EntityType="UMSernaSotomayorModel.PersonaLugare" />
+          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio" />
+          <EntitySet Name="AntecedentesGinecoObstetricio1" EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1" />
+          <EntitySet Name="HistoriaClinicas" EntityType="UMSernaSotomayorModel.HistoriaClinica" />
+          <EntitySet Name="MedicacionActuals" EntityType="UMSernaSotomayorModel.MedicacionActual" />
+          <EntitySet Name="ExploracionFisicas" EntityType="UMSernaSotomayorModel.ExploracionFisica" />
+          <EntitySet Name="InterrogatorioAparatosSistemas" EntityType="UMSernaSotomayorModel.InterrogatorioAparatosSistema" />
+          <AssociationSet Name="fk_tipo_catalogo" Association="UMSernaSotomayorModel.fk_tipo_catalogo">
+            <End Role="Tipo" EntitySet="Tipoes" />
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+          </AssociationSet>
+          <AssociationSet Name="PersonaCatalogo1" Association="UMSernaSotomayorModel.PersonaCatalogo1">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="Persona" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_persona_personacatalogo" Association="UMSernaSotomayorModel.fk_persona_personacatalogo">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="PersonaCatalogo" EntitySet="PersonaCatalogoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Adiccione">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Adicción" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Alergia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Alergia1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rh" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupación" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Catalogoes" Relationship="UMSernaSotomayorModel.PersonaCatalogo1" FromRole="Persona" ToRole="Catalogo" />
+          <NavigationProperty Name="PersonaCatalogoes" Relationship="UMSernaSotomayorModel.fk_persona_personacatalogo" FromRole="Persona" ToRole="PersonaCatalogo" />
+        </EntityType>
+        <EntityType Name="PersonaTelefono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Catalogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tipo" Relationship="UMSernaSotomayorModel.fk_tipo_catalogo" FromRole="Catalogo" ToRole="Tipo" />
+          <NavigationProperty Name="Personas" Relationship="UMSernaSotomayorModel.PersonaCatalogo1" FromRole="Catalogo" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Tipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Catalogoes" Relationship="UMSernaSotomayorModel.fk_tipo_catalogo" FromRole="Tipo" ToRole="Catalogo" />
+        </EntityType>
+        <EntityType Name="Ubicacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Abreviatura" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Lada" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesHereditario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <Property Name="Padecimiento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesPersonalesPatológicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Enfermedad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonaCatalogo">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="IdCatalogo" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_persona_personacatalogo" FromRole="PersonaCatalogo" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="PersonaLugare">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="IdTipo" />
+            <PropertyRef Name="IdUbicacion" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="AntecedentesGinecoObstetricio">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="G" />
+            <PropertyRef Name="P" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="A" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="Menarca" Type="DateTime" Precision="0" />
+          <Property Name="G" Type="Byte" Nullable="false" />
+          <Property Name="P" Type="Byte" Nullable="false" />
+          <Property Name="C" Type="Byte" Nullable="false" />
+          <Property Name="A" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AntecedentesGinecoObstetricio1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
+          <Property Name="FUR" Type="DateTime" Precision="0" />
+          <Property Name="Papanicolaou" Type="DateTime" Precision="0" />
+          <Property Name="Mastografia" Type="DateTime" Precision="0" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoriaClinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMédico" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tabaquitico" Type="Boolean" Nullable="false" />
+          <Property Name="Alcoholico" Type="Boolean" Nullable="false" />
+          <Property Name="PadecimientoActual" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Analisis" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImpresionDiagnostica" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PlanTerapeutico" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MedicacionActual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
+          <Property Name="Medicamento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Dosis" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Inicio" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ExploracionFisica">
+          <Key>
+            <PropertyRef Name="IdHistoria" />
+            <PropertyRef Name="TA" />
+          </Key>
+          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
+          <Property Name="TA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pulso" Type="Int32" />
+          <Property Name="FR" Type="Int32" />
+          <Property Name="FC" Type="Int32" />
+          <Property Name="Temp" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Estatura" Type="Int32" />
+          <Property Name="Peso" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InterrogatorioAparatosSistema">
+          <Key>
+            <PropertyRef Name="IdHistoria" />
+            <PropertyRef Name="IdCatalogo" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_tipo_catalogo">
+          <End Type="UMSernaSotomayorModel.Tipo" Role="Tipo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Catalogo">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PersonaCatalogo1">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="*" />
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="*" />
+        </Association>
+        <Association Name="fk_persona_personacatalogo">
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaCatalogo" Role="PersonaCatalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaCatalogo">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UMSernaSotomayorModelStoreContainer" CdmEntityContainer="UMSernaSotomayorEntities" />
+        <EntityContainerMapping StorageEntityContainer="UMSernaSotomayorModelStoreContainer" CdmEntityContainer="UMSernaSotomayorEntities" >
+          <EntitySetMapping Name="Adicciones">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Adiccione">
+              <MappingFragment StoreEntitySet="Adicciones">
+                <ScalarProperty Name="Adicción" ColumnName="Adicción" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alergias">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Alergia">
+              <MappingFragment StoreEntitySet="Alergias">
+                <ScalarProperty Name="Alergia1" ColumnName="Alergia" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="Nacimiento" ColumnName="Nacimiento" />
+                <ScalarProperty Name="Ocupación" ColumnName="Ocupación" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Rh" ColumnName="Rh" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonaTelefonos">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaTelefono">
+              <MappingFragment StoreEntitySet="PersonaTelefonos">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Catalogoes">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Catalogo">
+              <MappingFragment StoreEntitySet="Catalogo">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipoes">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Tipo">
+              <MappingFragment StoreEntitySet="Tipo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ubicacions">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Ubicacion">
+              <MappingFragment StoreEntitySet="Ubicacion">
+                <ScalarProperty Name="Lada" ColumnName="Lada" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AntecedentesHereditarios">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesHereditario">
+              <MappingFragment StoreEntitySet="AntecedentesHereditarios">
+                <ScalarProperty Name="Padecimiento" ColumnName="Padecimiento" />
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AntecedentesPersonalesPatológicos">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos">
+              <MappingFragment StoreEntitySet="AntecedentesPersonalesPatológicos">
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonaCatalogoes">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaCatalogo">
+              <MappingFragment StoreEntitySet="PersonaCatalogo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonaLugares">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaLugare">
+              <MappingFragment StoreEntitySet="PersonaLugares">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AntecedentesGinecoObstetricios">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesGinecoObstetricio">
+              <MappingFragment StoreEntitySet="AntecedentesGinecoObstetricios1">
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="Menarca" ColumnName="Menarca" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AntecedentesGinecoObstetricio1">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1">
+              <MappingFragment StoreEntitySet="AntecedentesGinecoObstetricios">
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="Mastografia" ColumnName="Mastografia" />
+                <ScalarProperty Name="Papanicolaou" ColumnName="Papanicolaou" />
+                <ScalarProperty Name="FUR" ColumnName="FUR" />
+                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoriaClinicas">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.HistoriaClinica">
+              <MappingFragment StoreEntitySet="HistoriaClinica">
+                <ScalarProperty Name="PlanTerapeutico" ColumnName="PlanTerapeutico" />
+                <ScalarProperty Name="ImpresionDiagnostica" ColumnName="ImpresionDiagnostica" />
+                <ScalarProperty Name="Analisis" ColumnName="Analisis" />
+                <ScalarProperty Name="PadecimientoActual" ColumnName="PadecimientoActual" />
+                <ScalarProperty Name="Alcoholico" ColumnName="Alcoholico" />
+                <ScalarProperty Name="Tabaquitico" ColumnName="Tabaquitico" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdMédico" ColumnName="IdMédico" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicacionActuals">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.MedicacionActual">
+              <MappingFragment StoreEntitySet="MedicacionActual">
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+                <ScalarProperty Name="Medicamento" ColumnName="Medicamento" />
+                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExploracionFisicas">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.ExploracionFisica">
+              <MappingFragment StoreEntitySet="ExploracionFisica">
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Estatura" ColumnName="Estatura" />
+                <ScalarProperty Name="Temp" ColumnName="Temp" />
+                <ScalarProperty Name="FC" ColumnName="FC" />
+                <ScalarProperty Name="FR" ColumnName="FR" />
+                <ScalarProperty Name="Pulso" ColumnName="Pulso" />
+                <ScalarProperty Name="TA" ColumnName="TA" />
+                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterrogatorioAparatosSistemas">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.InterrogatorioAparatosSistema">
+              <MappingFragment StoreEntitySet="InterrogatorioAparatosSistemas">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PersonaCatalogo1" TypeName="UMSernaSotomayorModel.PersonaCatalogo1" StoreEntitySet="PersonaCatalogo">
+            <EndProperty Name="Persona">
+              <ScalarProperty Name="Id" ColumnName="IdPersona" />
+            </EndProperty>
+            <EndProperty Name="Catalogo">
+              <ScalarProperty Name="Id" ColumnName="IdCatalogo" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
