@@ -15,7 +15,8 @@ namespace Sernasis.SernaSotomayor.ORM
     public partial class HistoriaClinica
     {
         public int Id { get; set; }
-        public int IdMédico { get; set; }
+        public int IdPaciente { get; set; }
+        public int IdMedico { get; set; }
         public System.DateTime Fecha { get; set; }
         public bool Tabaquitico { get; set; }
         public bool Alcoholico { get; set; }
@@ -23,5 +24,8 @@ namespace Sernasis.SernaSotomayor.ORM
         public string Analisis { get; set; }
         public string ImpresionDiagnostica { get; set; }
         public string PlanTerapeutico { get; set; }
+    
+        public virtual Medico Medico { get; set; }
+        public virtual Paciente Paciente { get; set; }
     }
 }

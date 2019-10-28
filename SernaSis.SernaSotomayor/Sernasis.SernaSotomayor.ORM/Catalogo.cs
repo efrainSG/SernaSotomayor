@@ -17,15 +17,27 @@ namespace Sernasis.SernaSotomayor.ORM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Catalogo()
         {
-            this.Personas = new HashSet<Persona>();
+            this.PersonaCatalogoes = new HashSet<PersonaCatalogo>();
+            this.PersonaLugares = new HashSet<PersonaLugare>();
+            this.PersonaTelefonos = new HashSet<PersonaTelefono>();
+            this.AntecedentesHereditarios = new HashSet<AntecedentesHereditario>();
+            this.AntecedentesPersonalesPatológicos = new HashSet<AntecedentesPersonalesPatológicos>();
         }
     
         public int Id { get; set; }
         public int IdTipo { get; set; }
         public string Valor { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaCatalogo> PersonaCatalogoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaLugare> PersonaLugares { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaTelefono> PersonaTelefonos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesHereditario> AntecedentesHereditarios { get; set; }
         public virtual Tipo Tipo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Persona> Personas { get; set; }
+        public virtual ICollection<AntecedentesPersonalesPatológicos> AntecedentesPersonalesPatológicos { get; set; }
     }
 }

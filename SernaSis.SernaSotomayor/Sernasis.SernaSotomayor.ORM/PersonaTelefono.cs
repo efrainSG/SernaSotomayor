@@ -18,5 +18,8 @@ namespace Sernasis.SernaSotomayor.ORM
         public int IdPersona { get; set; }
         public int IdTipo { get; set; }
         public string Numero { get; set; }
+    
+        public virtual Persona Persona { get; set; }
+        public virtual Catalogo Catalogo { get; set; }
     }
 }

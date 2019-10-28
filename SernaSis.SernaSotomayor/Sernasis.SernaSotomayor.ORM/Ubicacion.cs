@@ -14,9 +14,18 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class Ubicacion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ubicacion()
+        {
+            this.PersonaLugares = new HashSet<PersonaLugare>();
+        }
+    
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Abreviatura { get; set; }
         public string Lada { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaLugare> PersonaLugares { get; set; }
     }
 }

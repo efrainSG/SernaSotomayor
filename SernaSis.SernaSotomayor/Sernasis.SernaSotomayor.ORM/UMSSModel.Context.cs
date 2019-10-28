@@ -25,23 +25,20 @@ namespace Sernasis.SernaSotomayor.ORM
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Adiccione> Adicciones { get; set; }
-        public virtual DbSet<Alergia> Alergias { get; set; }
         public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<PersonaCatalogo> PersonaCatalogoes { get; set; }
+        public virtual DbSet<PersonaLugare> PersonaLugares { get; set; }
         public virtual DbSet<PersonaTelefono> PersonaTelefonos { get; set; }
         public virtual DbSet<Catalogo> Catalogoes { get; set; }
         public virtual DbSet<Tipo> Tipoes { get; set; }
         public virtual DbSet<Ubicacion> Ubicacions { get; set; }
+        public virtual DbSet<Adiccione> Adicciones { get; set; }
+        public virtual DbSet<Alergia> Alergias { get; set; }
         public virtual DbSet<AntecedentesHereditario> AntecedentesHereditarios { get; set; }
-        public virtual DbSet<AntecedentesPersonalesPatológicos> AntecedentesPersonalesPatológicos { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
-        public virtual DbSet<PersonaCatalogo> PersonaCatalogoes { get; set; }
-        public virtual DbSet<PersonaLugare> PersonaLugares { get; set; }
+        public virtual DbSet<AntecedentesPersonalesPatológicos> AntecedentesPersonalesPatológicos { get; set; }
         public virtual DbSet<AntecedentesGinecoObstetricio> AntecedentesGinecoObstetricios { get; set; }
-        public virtual DbSet<AntecedentesGinecoObstetricio1> AntecedentesGinecoObstetricio1 { get; set; }
         public virtual DbSet<HistoriaClinica> HistoriaClinicas { get; set; }
-        public virtual DbSet<MedicacionActual> MedicacionActuals { get; set; }
-        public virtual DbSet<ExploracionFisica> ExploracionFisicas { get; set; }
-        public virtual DbSet<InterrogatorioAparatosSistema> InterrogatorioAparatosSistemas { get; set; }
+        public virtual DbSet<Medico> Medicos { get; set; }
     }
 }

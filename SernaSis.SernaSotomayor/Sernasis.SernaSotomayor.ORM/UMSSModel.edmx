@@ -5,22 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UMSernaSotomayorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Adicciones">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="Adicción" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Alergias">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdPersona" Type="int" Nullable="false" />
-          <Property Name="Alergia" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="Persona">
           <Key>
             <PropertyRef Name="Id" />
@@ -42,14 +26,11 @@
           <Property Name="IdPersona" Type="int" Nullable="false" />
           <Property Name="IdCatalogo" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.Administracion.PersonaLugares' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="PersonaLugares">
           <Key>
-            <PropertyRef Name="IdPersona" />
-            <PropertyRef Name="IdTipo" />
-            <PropertyRef Name="IdUbicacion" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
           <Property Name="IdTipo" Type="int" Nullable="false" />
           <Property Name="IdUbicacion" Type="int" Nullable="false" />
@@ -88,40 +69,13 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="Abreviatura" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Lada" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="AntecedentesGinecoObstetricios">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdHistoria" Type="int" Nullable="false" />
-          <Property Name="FUR" Type="date" />
-          <Property Name="Papanicolaou" Type="date" />
-          <Property Name="Mastografia" Type="date" />
-          <Property Name="IdCatalogo" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.HistoriaClinica.ExploracionFisica' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="ExploracionFisica">
-          <Key>
-            <PropertyRef Name="IdHistoria" />
-            <PropertyRef Name="TA" />
-          </Key>
-          <Property Name="IdHistoria" Type="int" Nullable="false" />
-          <Property Name="TA" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Pulso" Type="int" />
-          <Property Name="FR" Type="int" />
-          <Property Name="FC" Type="int" />
-          <Property Name="Temp" Type="decimal" Precision="6" Scale="2" />
-          <Property Name="Estatura" Type="int" />
-          <Property Name="Peso" Type="decimal" Precision="6" Scale="2" />
-          <Property Name="Texto" Type="text" />
-        </EntityType>
         <EntityType Name="HistoriaClinica">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdMédico" Type="int" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
+          <Property Name="IdMedico" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Tabaquitico" Type="bit" Nullable="false" />
           <Property Name="Alcoholico" Type="bit" Nullable="false" />
@@ -130,39 +84,40 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="ImpresionDiagnostica" Type="text" Nullable="false" />
           <Property Name="PlanTerapeutico" Type="text" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.HistoriaClinica.InterrogatorioAparatosSistemas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="InterrogatorioAparatosSistemas">
-          <Key>
-            <PropertyRef Name="IdHistoria" />
-            <PropertyRef Name="IdCatalogo" />
-            <PropertyRef Name="Descripcion" />
-          </Key>
-          <Property Name="IdHistoria" Type="int" Nullable="false" />
-          <Property Name="IdCatalogo" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="text" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MedicacionActual">
+        <EntityType Name="Medico">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdHistoria" Type="int" Nullable="false" />
-          <Property Name="Medicamento" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Dosis" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Inicio" Type="date" />
+          <Property Name="IdPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Adicciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
+          <Property Name="Adiccion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alergias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
+          <Property Name="Alergia" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR\SERNASIS.SERNASOTOMAYOR.ORM\UMSERNASOTOMAYOR.MDF.Paciente.AntecedentesGinecoObstetricios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="AntecedentesGinecoObstetricios1">
+        <EntityType Name="AntecedentesGinecoObstetricios">
           <Key>
-            <PropertyRef Name="IdPersona" />
+            <PropertyRef Name="IdPaciente" />
             <PropertyRef Name="G" />
             <PropertyRef Name="P" />
             <PropertyRef Name="C" />
             <PropertyRef Name="A" />
           </Key>
-          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
           <Property Name="Menarca" Type="date" />
           <Property Name="G" Type="tinyint" Nullable="false" />
           <Property Name="P" Type="tinyint" Nullable="false" />
@@ -174,7 +129,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
           <Property Name="IdCatalogo" Type="int" Nullable="false" />
           <Property Name="Padecimiento" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -183,7 +138,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdPersona" Type="int" Nullable="false" />
+          <Property Name="IdPaciente" Type="int" Nullable="false" />
           <Property Name="Enfermedad" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Inicio" Type="date" Nullable="false" />
           <Property Name="IdCatalogo" Type="int" Nullable="false" />
@@ -195,6 +150,30 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdPersona" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="fk_Catalogo_AntecedentesHereditarios">
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+          <End Role="AntecedentesHereditarios" Type="Self.AntecedentesHereditarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesHereditarios">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Catalogo_AntecedentesPersonalesPatológicos">
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+          <End Role="AntecedentesPersonalesPatológicos" Type="Self.AntecedentesPersonalesPatológicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesPersonalesPatológicos">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_catalogo_personacatalogo">
           <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
           <End Role="PersonaCatalogo" Type="Self.PersonaCatalogo" Multiplicity="*" />
@@ -207,6 +186,102 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Medico_HistoriaClinica">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+          <End Role="HistoriaClinica" Type="Self.HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="IdMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_Adicciones">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Adicciones" Type="Self.Adicciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adicciones">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_Alergias">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Alergias" Type="Self.Alergias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Alergias">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_AntecedentesGinecoObstetricios">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntecedentesGinecoObstetricios" Type="Self.AntecedentesGinecoObstetricios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesGinecoObstetricios">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_AntecedentesHereditarios">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntecedentesHereditarios" Type="Self.AntecedentesHereditarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesHereditarios">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_AntecedentesPersonalesPatológicos">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="AntecedentesPersonalesPatológicos" Type="Self.AntecedentesPersonalesPatológicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesPersonalesPatológicos">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_HistoriaClinica">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="HistoriaClinica" Type="Self.HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_Medico">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_persona_personacatalogo">
           <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
           <End Role="PersonaCatalogo" Type="Self.PersonaCatalogo" Multiplicity="*" />
@@ -215,6 +290,30 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PersonaCatalogo">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_PersonaLugares">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="PersonaLugares" Type="Self.PersonaLugares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugares">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_PersonaTelefonos">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="PersonaTelefonos" Type="Self.PersonaTelefonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaTelefonos">
               <PropertyRef Name="IdPersona" />
             </Dependent>
           </ReferentialConstraint>
@@ -231,70 +330,138 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Tipo_PersonaLugares">
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+          <End Role="PersonaLugares" Type="Self.PersonaLugares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugares">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tipo_PersonaTelefonos">
+          <End Role="Catalogo" Type="Self.Catalogo" Multiplicity="1" />
+          <End Role="PersonaTelefonos" Type="Self.PersonaTelefonos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaTelefonos">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ubicacion_PersonaLugares">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="PersonaLugares" Type="Self.PersonaLugares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugares">
+              <PropertyRef Name="IdUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="UMSernaSotomayorModelStoreContainer">
-          <EntitySet Name="Adicciones" EntityType="Self.Adicciones" Schema="Administracion" store:Type="Tables" />
-          <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="Administracion" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="Administracion" store:Type="Tables" />
           <EntitySet Name="PersonaCatalogo" EntityType="Self.PersonaCatalogo" Schema="Administracion" store:Type="Tables" />
+          <EntitySet Name="PersonaLugares" EntityType="Self.PersonaLugares" Schema="Administracion" store:Type="Tables" />
           <EntitySet Name="PersonaTelefonos" EntityType="Self.PersonaTelefonos" Schema="Administracion" store:Type="Tables" />
           <EntitySet Name="Catalogo" EntityType="Self.Catalogo" Schema="Configuracion" store:Type="Tables" />
           <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="Configuracion" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="Configuracion" store:Type="Tables" />
-          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="Self.AntecedentesGinecoObstetricios" Schema="HistoriaClinica" store:Type="Tables" />
           <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="HistoriaClinica" store:Type="Tables" />
-          <EntitySet Name="MedicacionActual" EntityType="Self.MedicacionActual" Schema="HistoriaClinica" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="Medico" store:Type="Tables" />
+          <EntitySet Name="Adicciones" EntityType="Self.Adicciones" Schema="Paciente" store:Type="Tables" />
+          <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="Paciente" store:Type="Tables" />
           <EntitySet Name="AntecedentesHereditarios" EntityType="Self.AntecedentesHereditarios" Schema="Paciente" store:Type="Tables" />
           <EntitySet Name="AntecedentesPersonalesPatológicos" EntityType="Self.AntecedentesPersonalesPatológicos" Schema="Paciente" store:Type="Tables" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="Paciente" store:Type="Tables" />
-          <EntitySet Name="PersonaLugares" EntityType="Self.PersonaLugares" store:Type="Tables" store:Schema="Administracion">
+          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="Self.AntecedentesGinecoObstetricios" store:Type="Tables" store:Schema="Paciente">
             <DefiningQuery>SELECT 
-    [PersonaLugares].[IdPersona] AS [IdPersona], 
-    [PersonaLugares].[IdTipo] AS [IdTipo], 
-    [PersonaLugares].[IdUbicacion] AS [IdUbicacion], 
-    [PersonaLugares].[Fecha] AS [Fecha]
-    FROM [Administracion].[PersonaLugares] AS [PersonaLugares]</DefiningQuery>
+    [AntecedentesGinecoObstetricios].[IdPaciente] AS [IdPaciente], 
+    [AntecedentesGinecoObstetricios].[Menarca] AS [Menarca], 
+    [AntecedentesGinecoObstetricios].[G] AS [G], 
+    [AntecedentesGinecoObstetricios].[P] AS [P], 
+    [AntecedentesGinecoObstetricios].[C] AS [C], 
+    [AntecedentesGinecoObstetricios].[A] AS [A]
+    FROM [Paciente].[AntecedentesGinecoObstetricios] AS [AntecedentesGinecoObstetricios]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="ExploracionFisica" EntityType="Self.ExploracionFisica" store:Type="Tables" store:Schema="HistoriaClinica">
-            <DefiningQuery>SELECT 
-    [ExploracionFisica].[IdHistoria] AS [IdHistoria], 
-    [ExploracionFisica].[TA] AS [TA], 
-    [ExploracionFisica].[Pulso] AS [Pulso], 
-    [ExploracionFisica].[FR] AS [FR], 
-    [ExploracionFisica].[FC] AS [FC], 
-    [ExploracionFisica].[Temp] AS [Temp], 
-    [ExploracionFisica].[Estatura] AS [Estatura], 
-    [ExploracionFisica].[Peso] AS [Peso], 
-    [ExploracionFisica].[Texto] AS [Texto]
-    FROM [HistoriaClinica].[ExploracionFisica] AS [ExploracionFisica]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="InterrogatorioAparatosSistemas" EntityType="Self.InterrogatorioAparatosSistemas" store:Type="Tables" store:Schema="HistoriaClinica">
-            <DefiningQuery>SELECT 
-    [InterrogatorioAparatosSistemas].[IdHistoria] AS [IdHistoria], 
-    [InterrogatorioAparatosSistemas].[IdCatalogo] AS [IdCatalogo], 
-    [InterrogatorioAparatosSistemas].[Descripcion] AS [Descripcion]
-    FROM [HistoriaClinica].[InterrogatorioAparatosSistemas] AS [InterrogatorioAparatosSistemas]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AntecedentesGinecoObstetricios1" EntityType="Self.AntecedentesGinecoObstetricios1" store:Type="Tables" store:Schema="Paciente" store:Name="AntecedentesGinecoObstetricios">
-            <DefiningQuery>SELECT 
-    [AntecedentesGinecoObstetricios1].[IdPersona] AS [IdPersona], 
-    [AntecedentesGinecoObstetricios1].[Menarca] AS [Menarca], 
-    [AntecedentesGinecoObstetricios1].[G] AS [G], 
-    [AntecedentesGinecoObstetricios1].[P] AS [P], 
-    [AntecedentesGinecoObstetricios1].[C] AS [C], 
-    [AntecedentesGinecoObstetricios1].[A] AS [A]
-    FROM [Paciente].[AntecedentesGinecoObstetricios] AS [AntecedentesGinecoObstetricios1]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="fk_Catalogo_AntecedentesHereditarios" Association="Self.fk_Catalogo_AntecedentesHereditarios">
+            <End Role="Catalogo" EntitySet="Catalogo" />
+            <End Role="AntecedentesHereditarios" EntitySet="AntecedentesHereditarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Catalogo_AntecedentesPersonalesPatológicos" Association="Self.fk_Catalogo_AntecedentesPersonalesPatológicos">
+            <End Role="Catalogo" EntitySet="Catalogo" />
+            <End Role="AntecedentesPersonalesPatológicos" EntitySet="AntecedentesPersonalesPatológicos" />
+          </AssociationSet>
           <AssociationSet Name="fk_catalogo_personacatalogo" Association="Self.fk_catalogo_personacatalogo">
             <End Role="Catalogo" EntitySet="Catalogo" />
             <End Role="PersonaCatalogo" EntitySet="PersonaCatalogo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Medico_HistoriaClinica" Association="Self.fk_Medico_HistoriaClinica">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_Adicciones" Association="Self.fk_Paciente_Adicciones">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Adicciones" EntitySet="Adicciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_Alergias" Association="Self.fk_Paciente_Alergias">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Alergias" EntitySet="Alergias" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_AntecedentesGinecoObstetricios" Association="Self.fk_Paciente_AntecedentesGinecoObstetricios">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntecedentesGinecoObstetricios" EntitySet="AntecedentesGinecoObstetricios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_AntecedentesHereditarios" Association="Self.fk_Paciente_AntecedentesHereditarios">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntecedentesHereditarios" EntitySet="AntecedentesHereditarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_AntecedentesPersonalesPatológicos" Association="Self.fk_Paciente_AntecedentesPersonalesPatológicos">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="AntecedentesPersonalesPatológicos" EntitySet="AntecedentesPersonalesPatológicos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_HistoriaClinica" Association="Self.fk_Paciente_HistoriaClinica">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_Medico" Association="Self.fk_Persona_Medico">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Medico" EntitySet="Medico" />
           </AssociationSet>
           <AssociationSet Name="fk_persona_personacatalogo" Association="Self.fk_persona_personacatalogo">
             <End Role="Persona" EntitySet="Persona" />
             <End Role="PersonaCatalogo" EntitySet="PersonaCatalogo" />
           </AssociationSet>
+          <AssociationSet Name="fk_Persona_PersonaLugares" Association="Self.fk_Persona_PersonaLugares">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="PersonaLugares" EntitySet="PersonaLugares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_PersonaTelefonos" Association="Self.fk_Persona_PersonaTelefonos">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="PersonaTelefonos" EntitySet="PersonaTelefonos" />
+          </AssociationSet>
           <AssociationSet Name="fk_tipo_catalogo" Association="Self.fk_tipo_catalogo">
             <End Role="Tipo" EntitySet="Tipo" />
             <End Role="Catalogo" EntitySet="Catalogo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tipo_PersonaLugares" Association="Self.fk_Tipo_PersonaLugares">
+            <End Role="Catalogo" EntitySet="Catalogo" />
+            <End Role="PersonaLugares" EntitySet="PersonaLugares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tipo_PersonaTelefonos" Association="Self.fk_Tipo_PersonaTelefonos">
+            <End Role="Catalogo" EntitySet="Catalogo" />
+            <End Role="PersonaTelefonos" EntitySet="PersonaTelefonos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ubicacion_PersonaLugares" Association="Self.fk_Ubicacion_PersonaLugares">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="PersonaLugares" EntitySet="PersonaLugares" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -302,53 +469,98 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
     <edmx:ConceptualModels>
       <Schema Namespace="UMSernaSotomayorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UMSernaSotomayorEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Adicciones" EntityType="UMSernaSotomayorModel.Adiccione" />
-          <EntitySet Name="Alergias" EntityType="UMSernaSotomayorModel.Alergia" />
           <EntitySet Name="Personas" EntityType="UMSernaSotomayorModel.Persona" />
+          <EntitySet Name="PersonaCatalogoes" EntityType="UMSernaSotomayorModel.PersonaCatalogo" />
+          <EntitySet Name="PersonaLugares" EntityType="UMSernaSotomayorModel.PersonaLugare" />
           <EntitySet Name="PersonaTelefonos" EntityType="UMSernaSotomayorModel.PersonaTelefono" />
           <EntitySet Name="Catalogoes" EntityType="UMSernaSotomayorModel.Catalogo" />
           <EntitySet Name="Tipoes" EntityType="UMSernaSotomayorModel.Tipo" />
           <EntitySet Name="Ubicacions" EntityType="UMSernaSotomayorModel.Ubicacion" />
+          <EntitySet Name="Adicciones" EntityType="UMSernaSotomayorModel.Adiccione" />
+          <EntitySet Name="Alergias" EntityType="UMSernaSotomayorModel.Alergia" />
           <EntitySet Name="AntecedentesHereditarios" EntityType="UMSernaSotomayorModel.AntecedentesHereditario" />
-          <EntitySet Name="AntecedentesPersonalesPatológicos" EntityType="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" />
           <EntitySet Name="Pacientes" EntityType="UMSernaSotomayorModel.Paciente" />
-          <EntitySet Name="PersonaCatalogoes" EntityType="UMSernaSotomayorModel.PersonaCatalogo" />
-          <EntitySet Name="PersonaLugares" EntityType="UMSernaSotomayorModel.PersonaLugare" />
-          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio" />
-          <EntitySet Name="AntecedentesGinecoObstetricio1" EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1" />
-          <EntitySet Name="HistoriaClinicas" EntityType="UMSernaSotomayorModel.HistoriaClinica" />
-          <EntitySet Name="MedicacionActuals" EntityType="UMSernaSotomayorModel.MedicacionActual" />
-          <EntitySet Name="ExploracionFisicas" EntityType="UMSernaSotomayorModel.ExploracionFisica" />
-          <EntitySet Name="InterrogatorioAparatosSistemas" EntityType="UMSernaSotomayorModel.InterrogatorioAparatosSistema" />
-          <AssociationSet Name="fk_tipo_catalogo" Association="UMSernaSotomayorModel.fk_tipo_catalogo">
-            <End Role="Tipo" EntitySet="Tipoes" />
-            <End Role="Catalogo" EntitySet="Catalogoes" />
-          </AssociationSet>
-          <AssociationSet Name="PersonaCatalogo1" Association="UMSernaSotomayorModel.PersonaCatalogo1">
-            <End Role="Catalogo" EntitySet="Catalogoes" />
+          <AssociationSet Name="fk_Persona_Paciente" Association="UMSernaSotomayorModel.fk_Persona_Paciente">
             <End Role="Persona" EntitySet="Personas" />
+            <End Role="Paciente" EntitySet="Pacientes" />
           </AssociationSet>
           <AssociationSet Name="fk_persona_personacatalogo" Association="UMSernaSotomayorModel.fk_persona_personacatalogo">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="PersonaCatalogo" EntitySet="PersonaCatalogoes" />
           </AssociationSet>
+          <AssociationSet Name="fk_Persona_PersonaLugares" Association="UMSernaSotomayorModel.fk_Persona_PersonaLugares">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="PersonaLugare" EntitySet="PersonaLugares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Persona_PersonaTelefonos" Association="UMSernaSotomayorModel.fk_Persona_PersonaTelefonos">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="PersonaTelefono" EntitySet="PersonaTelefonos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_catalogo_personacatalogo" Association="UMSernaSotomayorModel.fk_catalogo_personacatalogo">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="PersonaCatalogo" EntitySet="PersonaCatalogoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tipo_PersonaLugares" Association="UMSernaSotomayorModel.fk_Tipo_PersonaLugares">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="PersonaLugare" EntitySet="PersonaLugares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Ubicacion_PersonaLugares" Association="UMSernaSotomayorModel.fk_Ubicacion_PersonaLugares">
+            <End Role="Ubicacion" EntitySet="Ubicacions" />
+            <End Role="PersonaLugare" EntitySet="PersonaLugares" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tipo_PersonaTelefonos" Association="UMSernaSotomayorModel.fk_Tipo_PersonaTelefonos">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="PersonaTelefono" EntitySet="PersonaTelefonos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Catalogo_AntecedentesHereditarios" Association="UMSernaSotomayorModel.fk_Catalogo_AntecedentesHereditarios">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="AntecedentesHereditario" EntitySet="AntecedentesHereditarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipo_catalogo" Association="UMSernaSotomayorModel.fk_tipo_catalogo">
+            <End Role="Tipo" EntitySet="Tipoes" />
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_Adicciones" Association="UMSernaSotomayorModel.fk_Paciente_Adicciones">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="Adiccione" EntitySet="Adicciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_Alergias" Association="UMSernaSotomayorModel.fk_Paciente_Alergias">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="Alergia" EntitySet="Alergias" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_AntecedentesHereditarios" Association="UMSernaSotomayorModel.fk_Paciente_AntecedentesHereditarios">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="AntecedentesHereditario" EntitySet="AntecedentesHereditarios" />
+          </AssociationSet>
+          <EntitySet Name="AntecedentesPersonalesPatológicos" EntityType="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" />
+          <AssociationSet Name="fk_Catalogo_AntecedentesPersonalesPatológicos" Association="UMSernaSotomayorModel.fk_Catalogo_AntecedentesPersonalesPatológicos">
+            <End Role="Catalogo" EntitySet="Catalogoes" />
+            <End Role="AntecedentesPersonalesPatológicos" EntitySet="AntecedentesPersonalesPatológicos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_AntecedentesPersonalesPatológicos" Association="UMSernaSotomayorModel.fk_Paciente_AntecedentesPersonalesPatológicos">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="AntecedentesPersonalesPatológicos" EntitySet="AntecedentesPersonalesPatológicos" />
+          </AssociationSet>
+          <EntitySet Name="AntecedentesGinecoObstetricios" EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio" />
+          <AssociationSet Name="fk_Paciente_AntecedentesGinecoObstetricios" Association="UMSernaSotomayorModel.fk_Paciente_AntecedentesGinecoObstetricios">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="AntecedentesGinecoObstetricio" EntitySet="AntecedentesGinecoObstetricios" />
+          </AssociationSet>
+          <EntitySet Name="HistoriaClinicas" EntityType="UMSernaSotomayorModel.HistoriaClinica" />
+          <EntitySet Name="Medicos" EntityType="UMSernaSotomayorModel.Medico" />
+          <AssociationSet Name="fk_Persona_Medico" Association="UMSernaSotomayorModel.fk_Persona_Medico">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Medico" EntitySet="Medicos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Medico_HistoriaClinica" Association="UMSernaSotomayorModel.fk_Medico_HistoriaClinica">
+            <End Role="Medico" EntitySet="Medicos" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinicas" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Paciente_HistoriaClinica" Association="UMSernaSotomayorModel.fk_Paciente_HistoriaClinica">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinicas" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Adiccione">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Adicción" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Alergia">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Alergia1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Persona">
           <Key>
             <PropertyRef Name="Id" />
@@ -361,8 +573,34 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Ocupación" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Catalogoes" Relationship="UMSernaSotomayorModel.PersonaCatalogo1" FromRole="Persona" ToRole="Catalogo" />
+          <NavigationProperty Name="Pacientes" Relationship="UMSernaSotomayorModel.fk_Persona_Paciente" FromRole="Persona" ToRole="Paciente" />
           <NavigationProperty Name="PersonaCatalogoes" Relationship="UMSernaSotomayorModel.fk_persona_personacatalogo" FromRole="Persona" ToRole="PersonaCatalogo" />
+          <NavigationProperty Name="PersonaLugares" Relationship="UMSernaSotomayorModel.fk_Persona_PersonaLugares" FromRole="Persona" ToRole="PersonaLugare" />
+          <NavigationProperty Name="PersonaTelefonos" Relationship="UMSernaSotomayorModel.fk_Persona_PersonaTelefonos" FromRole="Persona" ToRole="PersonaTelefono" />
+          <NavigationProperty Name="Medicos" Relationship="UMSernaSotomayorModel.fk_Persona_Medico" FromRole="Persona" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="PersonaCatalogo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_persona_personacatalogo" FromRole="PersonaCatalogo" ToRole="Persona" />
+          <NavigationProperty Name="Catalogo" Relationship="UMSernaSotomayorModel.fk_catalogo_personacatalogo" FromRole="PersonaCatalogo" ToRole="Catalogo" />
+        </EntityType>
+        <EntityType Name="PersonaLugare">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_Persona_PersonaLugares" FromRole="PersonaLugare" ToRole="Persona" />
+          <NavigationProperty Name="Catalogo" Relationship="UMSernaSotomayorModel.fk_Tipo_PersonaLugares" FromRole="PersonaLugare" ToRole="Catalogo" />
+          <NavigationProperty Name="Ubicacion" Relationship="UMSernaSotomayorModel.fk_Ubicacion_PersonaLugares" FromRole="PersonaLugare" ToRole="Ubicacion" />
         </EntityType>
         <EntityType Name="PersonaTelefono">
           <Key>
@@ -372,6 +610,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
           <Property Name="IdTipo" Type="Int32" Nullable="false" />
           <Property Name="Numero" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_Persona_PersonaTelefonos" FromRole="PersonaTelefono" ToRole="Persona" />
+          <NavigationProperty Name="Catalogo" Relationship="UMSernaSotomayorModel.fk_Tipo_PersonaTelefonos" FromRole="PersonaTelefono" ToRole="Catalogo" />
         </EntityType>
         <EntityType Name="Catalogo">
           <Key>
@@ -380,8 +620,12 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdTipo" Type="Int32" Nullable="false" />
           <Property Name="Valor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonaCatalogoes" Relationship="UMSernaSotomayorModel.fk_catalogo_personacatalogo" FromRole="Catalogo" ToRole="PersonaCatalogo" />
+          <NavigationProperty Name="PersonaLugares" Relationship="UMSernaSotomayorModel.fk_Tipo_PersonaLugares" FromRole="Catalogo" ToRole="PersonaLugare" />
+          <NavigationProperty Name="PersonaTelefonos" Relationship="UMSernaSotomayorModel.fk_Tipo_PersonaTelefonos" FromRole="Catalogo" ToRole="PersonaTelefono" />
+          <NavigationProperty Name="AntecedentesHereditarios" Relationship="UMSernaSotomayorModel.fk_Catalogo_AntecedentesHereditarios" FromRole="Catalogo" ToRole="AntecedentesHereditario" />
           <NavigationProperty Name="Tipo" Relationship="UMSernaSotomayorModel.fk_tipo_catalogo" FromRole="Catalogo" ToRole="Tipo" />
-          <NavigationProperty Name="Personas" Relationship="UMSernaSotomayorModel.PersonaCatalogo1" FromRole="Catalogo" ToRole="Persona" />
+          <NavigationProperty Name="AntecedentesPersonalesPatológicos" Relationship="UMSernaSotomayorModel.fk_Catalogo_AntecedentesPersonalesPatológicos" FromRole="Catalogo" ToRole="AntecedentesPersonalesPatológicos" />
         </EntityType>
         <EntityType Name="Tipo">
           <Key>
@@ -399,25 +643,36 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Abreviatura" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Lada" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonaLugares" Relationship="UMSernaSotomayorModel.fk_Ubicacion_PersonaLugares" FromRole="Ubicacion" ToRole="PersonaLugare" />
+        </EntityType>
+        <EntityType Name="Adiccione">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Adiccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_Adicciones" FromRole="Adiccione" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Alergia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Alergia1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_Alergias" FromRole="Alergia" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="AntecedentesHereditario">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
           <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
           <Property Name="Padecimiento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="AntecedentesPersonalesPatológicos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Enfermedad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Catalogo" Relationship="UMSernaSotomayorModel.fk_Catalogo_AntecedentesHereditarios" FromRole="AntecedentesHereditario" ToRole="Catalogo" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesHereditarios" FromRole="AntecedentesHereditario" ToRole="Paciente" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -425,119 +680,25 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_Persona_Paciente" FromRole="Paciente" ToRole="Persona" />
+          <NavigationProperty Name="Adicciones" Relationship="UMSernaSotomayorModel.fk_Paciente_Adicciones" FromRole="Paciente" ToRole="Adiccione" />
+          <NavigationProperty Name="Alergias" Relationship="UMSernaSotomayorModel.fk_Paciente_Alergias" FromRole="Paciente" ToRole="Alergia" />
+          <NavigationProperty Name="AntecedentesHereditarios" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesHereditarios" FromRole="Paciente" ToRole="AntecedentesHereditario" />
+          <NavigationProperty Name="AntecedentesPersonalesPatológicos" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesPersonalesPatológicos" FromRole="Paciente" ToRole="AntecedentesPersonalesPatológicos" />
+          <NavigationProperty Name="AntecedentesGinecoObstetricios" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesGinecoObstetricios" FromRole="Paciente" ToRole="AntecedentesGinecoObstetricio" />
+          <NavigationProperty Name="HistoriaClinicas" Relationship="UMSernaSotomayorModel.fk_Paciente_HistoriaClinica" FromRole="Paciente" ToRole="HistoriaClinica" />
         </EntityType>
-        <EntityType Name="PersonaCatalogo">
-          <Key>
-            <PropertyRef Name="IdPersona" />
-            <PropertyRef Name="IdCatalogo" />
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_persona_personacatalogo" FromRole="PersonaCatalogo" ToRole="Persona" />
-        </EntityType>
-        <EntityType Name="PersonaLugare">
-          <Key>
-            <PropertyRef Name="IdPersona" />
-            <PropertyRef Name="IdTipo" />
-            <PropertyRef Name="IdUbicacion" />
-          </Key>
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="IdTipo" Type="Int32" Nullable="false" />
-          <Property Name="IdUbicacion" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="AntecedentesGinecoObstetricio">
-          <Key>
-            <PropertyRef Name="IdPersona" />
-            <PropertyRef Name="G" />
-            <PropertyRef Name="P" />
-            <PropertyRef Name="C" />
-            <PropertyRef Name="A" />
-          </Key>
-          <Property Name="IdPersona" Type="Int32" Nullable="false" />
-          <Property Name="Menarca" Type="DateTime" Precision="0" />
-          <Property Name="G" Type="Byte" Nullable="false" />
-          <Property Name="P" Type="Byte" Nullable="false" />
-          <Property Name="C" Type="Byte" Nullable="false" />
-          <Property Name="A" Type="Byte" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AntecedentesGinecoObstetricio1">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
-          <Property Name="FUR" Type="DateTime" Precision="0" />
-          <Property Name="Papanicolaou" Type="DateTime" Precision="0" />
-          <Property Name="Mastografia" Type="DateTime" Precision="0" />
-          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="HistoriaClinica">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdMédico" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Tabaquitico" Type="Boolean" Nullable="false" />
-          <Property Name="Alcoholico" Type="Boolean" Nullable="false" />
-          <Property Name="PadecimientoActual" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Analisis" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ImpresionDiagnostica" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PlanTerapeutico" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="MedicacionActual">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
-          <Property Name="Medicamento" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Dosis" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Inicio" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="ExploracionFisica">
-          <Key>
-            <PropertyRef Name="IdHistoria" />
-            <PropertyRef Name="TA" />
-          </Key>
-          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
-          <Property Name="TA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Pulso" Type="Int32" />
-          <Property Name="FR" Type="Int32" />
-          <Property Name="FC" Type="Int32" />
-          <Property Name="Temp" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="Estatura" Type="Int32" />
-          <Property Name="Peso" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="InterrogatorioAparatosSistema">
-          <Key>
-            <PropertyRef Name="IdHistoria" />
-            <PropertyRef Name="IdCatalogo" />
-            <PropertyRef Name="Descripcion" />
-          </Key>
-          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
-          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="fk_tipo_catalogo">
-          <End Type="UMSernaSotomayorModel.Tipo" Role="Tipo" Multiplicity="1" />
-          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="*" />
+        <Association Name="fk_Persona_Paciente">
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tipo">
+            <Principal Role="Persona">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Catalogo">
-              <PropertyRef Name="IdTipo" />
+            <Dependent Role="Paciente">
+              <PropertyRef Name="IdPersona" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="PersonaCatalogo1">
-          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="*" />
-          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="*" />
         </Association>
         <Association Name="fk_persona_personacatalogo">
           <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
@@ -551,30 +712,270 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="fk_Persona_PersonaLugares">
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaLugare" Role="PersonaLugare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugare">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Persona_PersonaTelefonos">
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaTelefono" Role="PersonaTelefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaTelefono">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_catalogo_personacatalogo">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaCatalogo" Role="PersonaCatalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaCatalogo">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tipo_PersonaLugares">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaLugare" Role="PersonaLugare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugare">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Ubicacion_PersonaLugares">
+          <End Type="UMSernaSotomayorModel.Ubicacion" Role="Ubicacion" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaLugare" Role="PersonaLugare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaLugare">
+              <PropertyRef Name="IdUbicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tipo_PersonaTelefonos">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.PersonaTelefono" Role="PersonaTelefono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonaTelefono">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Catalogo_AntecedentesHereditarios">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.AntecedentesHereditario" Role="AntecedentesHereditario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesHereditario">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipo_catalogo">
+          <End Type="UMSernaSotomayorModel.Tipo" Role="Tipo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Catalogo">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_Adicciones">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Adiccione" Role="Adiccione" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adiccione">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_Alergias">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Alergia" Role="Alergia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Alergia">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_AntecedentesHereditarios">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.AntecedentesHereditario" Role="AntecedentesHereditario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesHereditario">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AntecedentesPersonalesPatológicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Enfermedad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdCatalogo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Catalogo" Relationship="UMSernaSotomayorModel.fk_Catalogo_AntecedentesPersonalesPatológicos" FromRole="AntecedentesPersonalesPatológicos" ToRole="Catalogo" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesPersonalesPatológicos" FromRole="AntecedentesPersonalesPatológicos" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="fk_Catalogo_AntecedentesPersonalesPatológicos">
+          <End Type="UMSernaSotomayorModel.Catalogo" Role="Catalogo" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" Role="AntecedentesPersonalesPatológicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalogo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesPersonalesPatológicos">
+              <PropertyRef Name="IdCatalogo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_AntecedentesPersonalesPatológicos">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos" Role="AntecedentesPersonalesPatológicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesPersonalesPatológicos">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AntecedentesGinecoObstetricio">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+            <PropertyRef Name="G" />
+            <PropertyRef Name="P" />
+            <PropertyRef Name="C" />
+            <PropertyRef Name="A" />
+          </Key>
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+          <Property Name="Menarca" Type="DateTime" Precision="0" />
+          <Property Name="G" Type="Byte" Nullable="false" />
+          <Property Name="P" Type="Byte" Nullable="false" />
+          <Property Name="C" Type="Byte" Nullable="false" />
+          <Property Name="A" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_AntecedentesGinecoObstetricios" FromRole="AntecedentesGinecoObstetricio" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="fk_Paciente_AntecedentesGinecoObstetricios">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.AntecedentesGinecoObstetricio" Role="AntecedentesGinecoObstetricio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AntecedentesGinecoObstetricio">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HistoriaClinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+          <Property Name="IdMedico" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tabaquitico" Type="Boolean" Nullable="false" />
+          <Property Name="Alcoholico" Type="Boolean" Nullable="false" />
+          <Property Name="PadecimientoActual" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Analisis" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImpresionDiagnostica" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PlanTerapeutico" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medico" Relationship="UMSernaSotomayorModel.fk_Medico_HistoriaClinica" FromRole="HistoriaClinica" ToRole="Medico" />
+          <NavigationProperty Name="Paciente" Relationship="UMSernaSotomayorModel.fk_Paciente_HistoriaClinica" FromRole="HistoriaClinica" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_Persona_Medico" FromRole="Medico" ToRole="Persona" />
+          <NavigationProperty Name="HistoriaClinicas" Relationship="UMSernaSotomayorModel.fk_Medico_HistoriaClinica" FromRole="Medico" ToRole="HistoriaClinica" />
+        </EntityType>
+        <Association Name="fk_Persona_Medico">
+          <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.Medico" Role="Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Medico_HistoriaClinica">
+          <End Type="UMSernaSotomayorModel.Medico" Role="Medico" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="IdMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Paciente_HistoriaClinica">
+          <End Type="UMSernaSotomayorModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UMSernaSotomayorModelStoreContainer" CdmEntityContainer="UMSernaSotomayorEntities" >
-          <EntitySetMapping Name="Adicciones">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Adiccione">
-              <MappingFragment StoreEntitySet="Adicciones">
-                <ScalarProperty Name="Adicción" ColumnName="Adicción" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Alergias">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Alergia">
-              <MappingFragment StoreEntitySet="Alergias">
-                <ScalarProperty Name="Alergia1" ColumnName="Alergia" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Personas">
             <EntityTypeMapping TypeName="UMSernaSotomayorModel.Persona">
               <MappingFragment StoreEntitySet="Persona">
@@ -585,6 +986,26 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
                 <ScalarProperty Name="Rh" ColumnName="Rh" />
                 <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonaCatalogoes">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaCatalogo">
+              <MappingFragment StoreEntitySet="PersonaCatalogo">
+                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonaLugares">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaLugare">
+              <MappingFragment StoreEntitySet="PersonaLugares">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -626,23 +1047,30 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Adicciones">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Adiccione">
+              <MappingFragment StoreEntitySet="Adicciones">
+                <ScalarProperty Name="Adiccion" ColumnName="Adiccion" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alergias">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Alergia">
+              <MappingFragment StoreEntitySet="Alergias">
+                <ScalarProperty Name="Alergia1" ColumnName="Alergia" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AntecedentesHereditarios">
             <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesHereditario">
               <MappingFragment StoreEntitySet="AntecedentesHereditarios">
                 <ScalarProperty Name="Padecimiento" ColumnName="Padecimiento" />
                 <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AntecedentesPersonalesPatológicos">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos">
-              <MappingFragment StoreEntitySet="AntecedentesPersonalesPatológicos">
-                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -655,46 +1083,26 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PersonaCatalogoes">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaCatalogo">
-              <MappingFragment StoreEntitySet="PersonaCatalogo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="AntecedentesPersonalesPatológicos">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesPersonalesPatológicos">
+              <MappingFragment StoreEntitySet="AntecedentesPersonalesPatológicos">
                 <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PersonaLugares">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.PersonaLugare">
-              <MappingFragment StoreEntitySet="PersonaLugares">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdUbicacion" ColumnName="IdUbicacion" />
-                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AntecedentesGinecoObstetricios">
             <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesGinecoObstetricio">
-              <MappingFragment StoreEntitySet="AntecedentesGinecoObstetricios1">
+              <MappingFragment StoreEntitySet="AntecedentesGinecoObstetricios">
                 <ScalarProperty Name="A" ColumnName="A" />
                 <ScalarProperty Name="C" ColumnName="C" />
                 <ScalarProperty Name="P" ColumnName="P" />
                 <ScalarProperty Name="G" ColumnName="G" />
                 <ScalarProperty Name="Menarca" ColumnName="Menarca" />
-                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AntecedentesGinecoObstetricio1">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1">
-              <MappingFragment StoreEntitySet="AntecedentesGinecoObstetricios">
-                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
-                <ScalarProperty Name="Mastografia" ColumnName="Mastografia" />
-                <ScalarProperty Name="Papanicolaou" ColumnName="Papanicolaou" />
-                <ScalarProperty Name="FUR" ColumnName="FUR" />
-                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -708,54 +1116,20 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
                 <ScalarProperty Name="Alcoholico" ColumnName="Alcoholico" />
                 <ScalarProperty Name="Tabaquitico" ColumnName="Tabaquitico" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdMédico" ColumnName="IdMédico" />
+                <ScalarProperty Name="IdMedico" ColumnName="IdMedico" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MedicacionActuals">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.MedicacionActual">
-              <MappingFragment StoreEntitySet="MedicacionActual">
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="Dosis" ColumnName="Dosis" />
-                <ScalarProperty Name="Medicamento" ColumnName="Medicamento" />
-                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ExploracionFisicas">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.ExploracionFisica">
-              <MappingFragment StoreEntitySet="ExploracionFisica">
-                <ScalarProperty Name="Texto" ColumnName="Texto" />
-                <ScalarProperty Name="Peso" ColumnName="Peso" />
-                <ScalarProperty Name="Estatura" ColumnName="Estatura" />
-                <ScalarProperty Name="Temp" ColumnName="Temp" />
-                <ScalarProperty Name="FC" ColumnName="FC" />
-                <ScalarProperty Name="FR" ColumnName="FR" />
-                <ScalarProperty Name="Pulso" ColumnName="Pulso" />
-                <ScalarProperty Name="TA" ColumnName="TA" />
-                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InterrogatorioAparatosSistemas">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.InterrogatorioAparatosSistema">
-              <MappingFragment StoreEntitySet="InterrogatorioAparatosSistemas">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdCatalogo" ColumnName="IdCatalogo" />
-                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="PersonaCatalogo1" TypeName="UMSernaSotomayorModel.PersonaCatalogo1" StoreEntitySet="PersonaCatalogo">
-            <EndProperty Name="Persona">
-              <ScalarProperty Name="Id" ColumnName="IdPersona" />
-            </EndProperty>
-            <EndProperty Name="Catalogo">
-              <ScalarProperty Name="Id" ColumnName="IdCatalogo" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

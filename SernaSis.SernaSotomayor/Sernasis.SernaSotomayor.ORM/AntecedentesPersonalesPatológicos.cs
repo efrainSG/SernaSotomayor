@@ -15,9 +15,12 @@ namespace Sernasis.SernaSotomayor.ORM
     public partial class AntecedentesPersonalesPatológicos
     {
         public int Id { get; set; }
-        public int IdPersona { get; set; }
+        public int IdPaciente { get; set; }
         public string Enfermedad { get; set; }
         public System.DateTime Inicio { get; set; }
         public int IdCatalogo { get; set; }
+    
+        public virtual Catalogo Catalogo { get; set; }
+        public virtual Paciente Paciente { get; set; }
     }
 }

@@ -14,11 +14,13 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class AntecedentesGinecoObstetricio
     {
-        public int IdPersona { get; set; }
+        public int IdPaciente { get; set; }
         public Nullable<System.DateTime> Menarca { get; set; }
         public byte G { get; set; }
         public byte P { get; set; }
         public byte C { get; set; }
         public byte A { get; set; }
+    
+        public virtual Paciente Paciente { get; set; }
     }
 }

@@ -17,8 +17,11 @@ namespace Sernasis.SernaSotomayor.ORM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
-            this.Catalogoes = new HashSet<Catalogo>();
+            this.Pacientes = new HashSet<Paciente>();
             this.PersonaCatalogoes = new HashSet<PersonaCatalogo>();
+            this.PersonaLugares = new HashSet<PersonaLugare>();
+            this.PersonaTelefonos = new HashSet<PersonaTelefono>();
+            this.Medicos = new HashSet<Medico>();
         }
     
         public int Id { get; set; }
@@ -31,8 +34,14 @@ namespace Sernasis.SernaSotomayor.ORM
         public System.DateTime Nacimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Catalogo> Catalogoes { get; set; }
+        public virtual ICollection<Paciente> Pacientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonaCatalogo> PersonaCatalogoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaLugare> PersonaLugares { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonaTelefono> PersonaTelefonos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Medico> Medicos { get; set; }
     }
 }

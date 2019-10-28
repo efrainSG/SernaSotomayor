@@ -14,9 +14,14 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class PersonaLugare
     {
+        public int Id { get; set; }
         public int IdPersona { get; set; }
         public int IdTipo { get; set; }
         public int IdUbicacion { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+    
+        public virtual Persona Persona { get; set; }
+        public virtual Catalogo Catalogo { get; set; }
+        public virtual Ubicacion Ubicacion { get; set; }
     }
 }

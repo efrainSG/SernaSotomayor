@@ -14,7 +14,32 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class Paciente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Paciente()
+        {
+            this.Adicciones = new HashSet<Adiccione>();
+            this.Alergias = new HashSet<Alergia>();
+            this.AntecedentesHereditarios = new HashSet<AntecedentesHereditario>();
+            this.AntecedentesPersonalesPatológicos = new HashSet<AntecedentesPersonalesPatológicos>();
+            this.AntecedentesGinecoObstetricios = new HashSet<AntecedentesGinecoObstetricio>();
+            this.HistoriaClinicas = new HashSet<HistoriaClinica>();
+        }
+    
         public int Id { get; set; }
         public int IdPersona { get; set; }
+    
+        public virtual Persona Persona { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Adiccione> Adicciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Alergia> Alergias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesHereditario> AntecedentesHereditarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesPersonalesPatológicos> AntecedentesPersonalesPatológicos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesGinecoObstetricio> AntecedentesGinecoObstetricios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoriaClinica> HistoriaClinicas { get; set; }
     }
 }

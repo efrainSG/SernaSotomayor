@@ -15,7 +15,9 @@ namespace Sernasis.SernaSotomayor.ORM
     public partial class Adiccione
     {
         public int Id { get; set; }
-        public int IdPersona { get; set; }
-        public string Adicción { get; set; }
+        public int IdPaciente { get; set; }
+        public string Adiccion { get; set; }
+    
+        public virtual Paciente Paciente { get; set; }
     }
 }

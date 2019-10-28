@@ -15,7 +15,9 @@ namespace Sernasis.SernaSotomayor.ORM
     public partial class Alergia
     {
         public int Id { get; set; }
-        public int IdPersona { get; set; }
+        public int IdPaciente { get; set; }
         public string Alergia1 { get; set; }
+    
+        public virtual Paciente Paciente { get; set; }
     }
 }

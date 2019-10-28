@@ -14,10 +14,11 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class PersonaCatalogo
     {
+        public int Id { get; set; }
         public int IdPersona { get; set; }
         public int IdCatalogo { get; set; }
-        public int Id { get; set; }
     
         public virtual Persona Persona { get; set; }
+        public virtual Catalogo Catalogo { get; set; }
     }
 }

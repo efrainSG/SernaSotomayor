@@ -92,6 +92,12 @@
       <DependentUpon>UMSSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="HistoriaClinica.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Medico.cs">
+      <DependentUpon>UMSSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Paciente.cs">
       <DependentUpon>UMSSModel.tt</DependentUpon>
     </Compile>

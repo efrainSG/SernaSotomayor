@@ -12,13 +12,19 @@ namespace Sernasis.SernaSotomayor.ORM
     using System;
     using System.Collections.Generic;
     
-    public partial class AntecedentesGinecoObstetricio1
+    public partial class Medico
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Medico()
+        {
+            this.HistoriaClinicas = new HashSet<HistoriaClinica>();
+        }
+    
         public int Id { get; set; }
-        public int IdHistoria { get; set; }
-        public Nullable<System.DateTime> FUR { get; set; }
-        public Nullable<System.DateTime> Papanicolaou { get; set; }
-        public Nullable<System.DateTime> Mastografia { get; set; }
-        public int IdCatalogo { get; set; }
+        public int IdPersona { get; set; }
+    
+        public virtual Persona Persona { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoriaClinica> HistoriaClinicas { get; set; }
     }
 }
