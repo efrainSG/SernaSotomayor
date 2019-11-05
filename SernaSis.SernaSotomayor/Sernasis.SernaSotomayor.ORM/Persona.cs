@@ -22,6 +22,7 @@ namespace Sernasis.SernaSotomayor.ORM
             this.PersonaLugares = new HashSet<PersonaLugare>();
             this.PersonaTelefonos = new HashSet<PersonaTelefono>();
             this.Medicos = new HashSet<Medico>();
+            this.Usuarios = new HashSet<Usuario>();
         }
     
         public int Id { get; set; }
@@ -43,5 +44,7 @@ namespace Sernasis.SernaSotomayor.ORM
         public virtual ICollection<PersonaTelefono> PersonaTelefonos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Medico> Medicos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

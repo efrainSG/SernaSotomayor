@@ -49,6 +49,10 @@
       <Project>{b752772a-a832-4100-ac94-46d0d71161ce}</Project>
       <Name>Sernasis.SernaSotomayor.ORM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SernaSIs.SernaSotomayor.WCF.Contract.Data\SernaSIs.SernaSotomayor.WCF.Contract.Data.csproj">
+      <Project>{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}</Project>
+      <Name>SernaSIs.SernaSotomayor.WCF.Contract.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sernasis.SernaSotomayor.WCF.Contratos\Sernasis.SernaSotomayor.WCF.Contract.csproj">
       <Project>{783d8c06-e616-4fbb-8d70-941a36a929a7}</Project>
       <Name>Sernasis.SernaSotomayor.WCF.Contract</Name>

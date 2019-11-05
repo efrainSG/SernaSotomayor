@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SernaSis.SernaSotomayor.WCF", "SernaSis.SernaSotomayor.WCF\", "{01ABA64B-D3FB-4A63-9B13-68A1829A7246}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		ProjectReferences = "{783d8c06-e616-4fbb-8d70-941a36a929a7}|Sernasis.SernaSotomayor.WCF.Contratos.dll;{becde6ef-e400-4f6e-a7b0-76ee75bd70bc}|Sernasis.SernaSotomayor.WCF.Implement.dll;{B752772A-A832-4100-AC94-46D0D71161CE}|Sernasis.SernaSotomayor.ORM.dll;"
+		ProjectReferences = "{783d8c06-e616-4fbb-8d70-941a36a929a7}|Sernasis.SernaSotomayor.WCF.Contratos.dll;{becde6ef-e400-4f6e-a7b0-76ee75bd70bc}|Sernasis.SernaSotomayor.WCF.Implement.dll;{B752772A-A832-4100-AC94-46D0D71161CE}|Sernasis.SernaSotomayor.ORM.dll;{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}|SernaSIs.SernaSotomayor.WCF.Contract.Data.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_23704"
 		Debug.AspNetCompiler.PhysicalPath = "SernaSis.SernaSotomayor.WCF\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_23704\"
@@ -51,6 +51,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sernasis.SernaSotomayor.Assembler", "..\Sernasis.SernaSotomayor.Assembler\Sernasis.SernaSotomayor.Assembler.csproj", "{D2118E51-CB9D-4DE7-B0F0-0D35C87EB50A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias.Assembler", "..\PruebasUnitarias.Assembler\PruebasUnitarias.Assembler.csproj", "{120FDBAB-2DDE-4CE5-9825-4631B69D8492}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SernaSIs.SernaSotomayor.WCF.Contract.Data", "SernaSIs.SernaSotomayor.WCF.Contract.Data\SernaSIs.SernaSotomayor.WCF.Contract.Data.csproj", "{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,10 @@ Global
 		{120FDBAB-2DDE-4CE5-9825-4631B69D8492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{120FDBAB-2DDE-4CE5-9825-4631B69D8492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{120FDBAB-2DDE-4CE5-9825-4631B69D8492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{0D084770-36C6-4FD8-A24C-3B86873DE92F} = {734BDB00-6085-4250-8595-684D67411755}
 		{D2118E51-CB9D-4DE7-B0F0-0D35C87EB50A} = {B6EF0E5E-0FF4-4DDA-B479-55D503F7787C}
 		{120FDBAB-2DDE-4CE5-9825-4631B69D8492} = {B6EF0E5E-0FF4-4DDA-B479-55D503F7787C}
+		{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23} = {734BDB00-6085-4250-8595-684D67411755}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB6233EE-86AE-472F-B4B3-7C9E85359621}

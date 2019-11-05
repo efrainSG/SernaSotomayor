@@ -14,6 +14,16 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class HistoriaClinica
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HistoriaClinica()
+        {
+            this.AntecedentesGinecoObstetricios = new HashSet<AntecedentesGinecoObstetricio1>();
+            this.InterrogatorioAparatosSistemas = new HashSet<InterrogatorioAparatosSistema>();
+            this.MedicacionActuals = new HashSet<MedicacionActual>();
+            this.ExploracionFisicas = new HashSet<ExploracionFisica>();
+            this.NotaEvolutivas = new HashSet<NotaEvolutiva>();
+        }
+    
         public int Id { get; set; }
         public int IdPaciente { get; set; }
         public int IdMedico { get; set; }
@@ -27,5 +37,15 @@ namespace Sernasis.SernaSotomayor.ORM
     
         public virtual Medico Medico { get; set; }
         public virtual Paciente Paciente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesGinecoObstetricio1> AntecedentesGinecoObstetricios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InterrogatorioAparatosSistema> InterrogatorioAparatosSistemas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MedicacionActual> MedicacionActuals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExploracionFisica> ExploracionFisicas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotaEvolutiva> NotaEvolutivas { get; set; }
     }
 }

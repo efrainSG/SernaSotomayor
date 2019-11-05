@@ -44,6 +44,25 @@
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Persona_Medico" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Medico_HistoriaClinica" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Paciente_HistoriaClinica" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.AntecedentesGinecoObstetricio1" Width="1.5" PointX="12.375" PointY="9.25" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Catalogo_AntecedentesGinecoObstetricios" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Historia_AntecedentesGinecoObstetricios" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.InterrogatorioAparatosSistema" Width="1.5" PointX="14.375" PointY="6.125" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.MedicacionActual" Width="1.5" PointX="12.375" PointY="13" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Catalogo_InterrogatorioAparatosSistemas" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_InterrogatorioAparatosSistemas" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_MedicacionActual" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.MedicoEspecialidad" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Rol" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Usuario" Width="1.5" PointX="0.5" PointY="5.875" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.ExploracionFisica" Width="1.5" PointX="12.375" PointY="20.25" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_persona_usuario" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Catalogo_MedicoEspecialidad" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Medico_MedicoEspecialidad" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_Rol_Usuario" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.NotaEvolutiva" Width="1.5" PointX="12.375" PointY="16.5" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_NotaEvolutiva" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

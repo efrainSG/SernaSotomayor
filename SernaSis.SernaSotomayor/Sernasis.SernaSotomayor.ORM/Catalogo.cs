@@ -22,6 +22,9 @@ namespace Sernasis.SernaSotomayor.ORM
             this.PersonaTelefonos = new HashSet<PersonaTelefono>();
             this.AntecedentesHereditarios = new HashSet<AntecedentesHereditario>();
             this.AntecedentesPersonalesPatológicos = new HashSet<AntecedentesPersonalesPatológicos>();
+            this.AntecedentesGinecoObstetricios = new HashSet<AntecedentesGinecoObstetricio1>();
+            this.InterrogatorioAparatosSistemas = new HashSet<InterrogatorioAparatosSistema>();
+            this.MedicoEspecialidads = new HashSet<MedicoEspecialidad>();
         }
     
         public int Id { get; set; }
@@ -39,5 +42,11 @@ namespace Sernasis.SernaSotomayor.ORM
         public virtual Tipo Tipo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AntecedentesPersonalesPatológicos> AntecedentesPersonalesPatológicos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AntecedentesGinecoObstetricio1> AntecedentesGinecoObstetricios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InterrogatorioAparatosSistema> InterrogatorioAparatosSistemas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MedicoEspecialidad> MedicoEspecialidads { get; set; }
     }
 }

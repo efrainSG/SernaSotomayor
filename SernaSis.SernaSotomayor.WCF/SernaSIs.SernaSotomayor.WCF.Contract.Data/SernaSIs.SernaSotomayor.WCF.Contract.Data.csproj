@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{783D8C06-E616-4FBB-8D70-941A36A929A7}</ProjectGuid>
+    <ProjectGuid>{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sernasis.SernaSotomayor.WCF.Contratos</RootNamespace>
-    <AssemblyName>Sernasis.SernaSotomayor.WCF.Contratos</AssemblyName>
+    <RootNamespace>SernaSIs.SernaSotomayor.WCF.Contract.Data</RootNamespace>
+    <AssemblyName>SernaSIs.SernaSotomayor.WCF.Contract.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,8 +34,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,14 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServicioHC.cs" />
+    <Compile Include="IDataHC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SernaSIs.SernaSotomayor.WCF.Contract.Data\SernaSIs.SernaSotomayor.WCF.Contract.Data.csproj">
-      <Project>{7FADE351-7CEF-4603-ABE9-04D4EE3F8E23}</Project>
-      <Name>SernaSIs.SernaSotomayor.WCF.Contract.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
