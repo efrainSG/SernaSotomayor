@@ -46,7 +46,7 @@ namespace Sernasis.SernaSotomayor.ORM
         public virtual DbSet<MedicoEspecialidad> MedicoEspecialidads { get; set; }
         public virtual DbSet<Rol> Rols { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<ExploracionFisica> ExploracionFisicas { get; set; }
         public virtual DbSet<NotaEvolutiva> NotaEvolutivas { get; set; }
+        public virtual DbSet<ExploracionFisica> ExploracionFisicas { get; set; }
     }
 }

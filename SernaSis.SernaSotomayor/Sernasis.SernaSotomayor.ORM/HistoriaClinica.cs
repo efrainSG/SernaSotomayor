@@ -20,8 +20,8 @@ namespace Sernasis.SernaSotomayor.ORM
             this.AntecedentesGinecoObstetricios = new HashSet<AntecedentesGinecoObstetricio1>();
             this.InterrogatorioAparatosSistemas = new HashSet<InterrogatorioAparatosSistema>();
             this.MedicacionActuals = new HashSet<MedicacionActual>();
-            this.ExploracionFisicas = new HashSet<ExploracionFisica>();
             this.NotaEvolutivas = new HashSet<NotaEvolutiva>();
+            this.ExploracionFisicas = new HashSet<ExploracionFisica>();
         }
     
         public int Id { get; set; }
@@ -44,8 +44,8 @@ namespace Sernasis.SernaSotomayor.ORM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicacionActual> MedicacionActuals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ExploracionFisica> ExploracionFisicas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotaEvolutiva> NotaEvolutivas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExploracionFisica> ExploracionFisicas { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Sernasis.SernaSotomayor.ORM
     
     public partial class ExploracionFisica
     {
+        public int Id { get; set; }
         public int IdHistoria { get; set; }
         public string TA { get; set; }
         public Nullable<int> Pulso { get; set; }
@@ -23,7 +24,6 @@ namespace Sernasis.SernaSotomayor.ORM
         public Nullable<int> Estatura { get; set; }
         public Nullable<decimal> Peso { get; set; }
         public string Texto { get; set; }
-        public int Id { get; set; }
     
         public virtual HistoriaClinica HistoriaClinica { get; set; }
     }

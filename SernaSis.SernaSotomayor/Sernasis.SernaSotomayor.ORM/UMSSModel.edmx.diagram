@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="UMSernaSotomayorModel.PersonaLugare" Width="1.5" PointX="11.5" PointY="5.375" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.PersonaTelefono" Width="1.5" PointX="0.5" PointY="8.125" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.Catalogo" Width="1.5" PointX="3.125" PointY="5.25" />
-        <EntityTypeShape EntityType="UMSernaSotomayorModel.Tipo" Width="1.5" PointX="2.875" PointY="8.75" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Tipo" Width="1.5" PointX="2.5" PointY="10.125" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.Ubicacion" Width="1.5" PointX="7.625" PointY="5.75" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.Adiccione" Width="1.5" PointX="7.5" PointY="0.75" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.Alergia" Width="1.5" PointX="7.625" PointY="3.375" />
@@ -19,7 +19,7 @@
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Persona_Paciente" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_persona_personacatalogo" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Persona_PersonaLugares" ManuallyRouted="true" >
-          <ConnectorPoint PointX="1.7370674959134451" PointY="0.625" />
+          <ConnectorPoint PointX="1.7370674959134451" PointY="0.75" />
           <ConnectorPoint PointX="1.7370674959134451" PointY="0.20843968972029892" />
           <ConnectorPoint PointX="12.25" PointY="0.20843968972029892" />
           <ConnectorPoint PointX="12.25" PointY="5.375" />
@@ -53,16 +53,16 @@
         <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_InterrogatorioAparatosSistemas" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_MedicacionActual" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.MedicoEspecialidad" Width="1.5" PointX="5.375" PointY="16.75" />
-        <EntityTypeShape EntityType="UMSernaSotomayorModel.Rol" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.Rol" Width="1.5" PointX="5.375" PointY="9.25" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.Usuario" Width="1.5" PointX="0.5" PointY="5.875" />
-        <EntityTypeShape EntityType="UMSernaSotomayorModel.ExploracionFisica" Width="1.5" PointX="12.375" PointY="20.25" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_persona_usuario" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Catalogo_MedicoEspecialidad" />
-        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Medico_MedicoEspecialidad" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_Rol_Usuario" />
         <EntityTypeShape EntityType="UMSernaSotomayorModel.NotaEvolutiva" Width="1.5" PointX="12.375" PointY="16.5" />
         <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_NotaEvolutiva" />
+        <EntityTypeShape EntityType="UMSernaSotomayorModel.ExploracionFisica" Width="1.5" PointX="12.375" PointY="0.875" />
+        <AssociationConnector Association="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

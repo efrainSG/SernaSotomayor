@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +46,10 @@
     <Compile Include="ServicioHC.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Sernasis.SernaSotomayor.Assembler\Sernasis.SernaSotomayor.Assembler.csproj">
+      <Project>{D2118E51-CB9D-4DE7-B0F0-0D35C87EB50A}</Project>
+      <Name>Sernasis.SernaSotomayor.Assembler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SernaSis.SernaSotomayor\Sernasis.SernaSotomayor.ORM\Sernasis.SernaSotomayor.ORM.csproj">
       <Project>{b752772a-a832-4100-ac94-46d0d71161ce}</Project>
       <Name>Sernasis.SernaSotomayor.ORM</Name>

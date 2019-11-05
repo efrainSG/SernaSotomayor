@@ -260,6 +260,9 @@ if(exists(select 1 from sys.schemas s (nolock) join sys.objects o (nolock) on s.
 set @tabla = 'ExploracionFisica'
 if(exists(select 1 from sys.schemas s (nolock) join sys.objects o (nolock) on s.[schema_id] = o.[schema_id] where s.name = @esquema and o.name = @tabla))
 	exec('DROP TABLE ' + @esquema + '.' + @tabla)
+set @tabla = 'NotaEvolutiva'
+if(exists(select 1 from sys.schemas s (nolock) join sys.objects o (nolock) on s.[schema_id] = o.[schema_id] where s.name = @esquema and o.name = @tabla))
+	exec('DROP TABLE ' + @esquema + '.' + @tabla)
 end;
 
  -- Agregar tablas
@@ -419,7 +422,7 @@ end;
 begin
 alter table Configuracion.Catalogo 
 	add constraint fk_tipo_catalogo foreign key (IdTipo) 
-	references Configuracion.Tipo(Id) on update no action on delete no action
+	references Configuracion.Tipo(Id) on update no action on delete no action;
 
 alter table Administracion.PersonaCatalogo 
 	add constraint fk_catalogo_personacatalogo foreign key (IdCatalogo) 

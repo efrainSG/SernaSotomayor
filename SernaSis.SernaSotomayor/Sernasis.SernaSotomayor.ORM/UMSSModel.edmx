@@ -865,7 +865,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <EntitySet Name="MedicoEspecialidads" EntityType="UMSernaSotomayorModel.MedicoEspecialidad" />
           <EntitySet Name="Rols" EntityType="UMSernaSotomayorModel.Rol" />
           <EntitySet Name="Usuarios" EntityType="UMSernaSotomayorModel.Usuario" />
-          <EntitySet Name="ExploracionFisicas" EntityType="UMSernaSotomayorModel.ExploracionFisica" />
           <AssociationSet Name="fk_persona_usuario" Association="UMSernaSotomayorModel.fk_persona_usuario">
             <End Role="Persona" EntitySet="Personas" />
             <End Role="Usuario" EntitySet="Usuarios" />
@@ -873,10 +872,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <AssociationSet Name="fk_Catalogo_MedicoEspecialidad" Association="UMSernaSotomayorModel.fk_Catalogo_MedicoEspecialidad">
             <End Role="Catalogo" EntitySet="Catalogoes" />
             <End Role="MedicoEspecialidad" EntitySet="MedicoEspecialidads" />
-          </AssociationSet>
-          <AssociationSet Name="fk_HistoriaClinica_ExploracionFisica" Association="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica">
-            <End Role="HistoriaClinica" EntitySet="HistoriaClinicas" />
-            <End Role="ExploracionFisica" EntitySet="ExploracionFisicas" />
           </AssociationSet>
           <AssociationSet Name="fk_Medico_MedicoEspecialidad" Association="UMSernaSotomayorModel.fk_Medico_MedicoEspecialidad">
             <End Role="Medico" EntitySet="Medicos" />
@@ -890,6 +885,11 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <AssociationSet Name="fk_HistoriaClinica_NotaEvolutiva" Association="UMSernaSotomayorModel.fk_HistoriaClinica_NotaEvolutiva">
             <End Role="HistoriaClinica" EntitySet="HistoriaClinicas" />
             <End Role="NotaEvolutiva" EntitySet="NotaEvolutivas" />
+          </AssociationSet>
+          <EntitySet Name="ExploracionFisicas" EntityType="UMSernaSotomayorModel.ExploracionFisica" />
+          <AssociationSet Name="fk_HistoriaClinica_ExploracionFisica" Association="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica">
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinicas" />
+            <End Role="ExploracionFisica" EntitySet="ExploracionFisicas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Persona">
@@ -1262,8 +1262,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <NavigationProperty Name="AntecedentesGinecoObstetricios" Relationship="UMSernaSotomayorModel.fk_Historia_AntecedentesGinecoObstetricios" FromRole="HistoriaClinica" ToRole="AntecedentesGinecoObstetricio1" />
           <NavigationProperty Name="InterrogatorioAparatosSistemas" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_InterrogatorioAparatosSistemas" FromRole="HistoriaClinica" ToRole="InterrogatorioAparatosSistema" />
           <NavigationProperty Name="MedicacionActuals" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_MedicacionActual" FromRole="HistoriaClinica" ToRole="MedicacionActual" />
-          <NavigationProperty Name="ExploracionFisicas" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" FromRole="HistoriaClinica" ToRole="ExploracionFisica" />
           <NavigationProperty Name="NotaEvolutivas" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_NotaEvolutiva" FromRole="HistoriaClinica" ToRole="NotaEvolutiva" />
+          <NavigationProperty Name="ExploracionFisicas" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" FromRole="HistoriaClinica" ToRole="ExploracionFisica" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -1437,24 +1437,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
           <NavigationProperty Name="Persona" Relationship="UMSernaSotomayorModel.fk_persona_usuario" FromRole="Usuario" ToRole="Persona" />
           <NavigationProperty Name="Rol" Relationship="UMSernaSotomayorModel.fk_Rol_Usuario" FromRole="Usuario" ToRole="Rol" />
         </EntityType>
-        <EntityType Name="ExploracionFisica">
-          <Key>
-            <PropertyRef Name="IdHistoria" />
-            <PropertyRef Name="TA" />
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
-          <Property Name="TA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Pulso" Type="Int32" />
-          <Property Name="FR" Type="Int32" />
-          <Property Name="FC" Type="Int32" />
-          <Property Name="Temp" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="Estatura" Type="Int32" />
-          <Property Name="Peso" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="HistoriaClinica" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" FromRole="ExploracionFisica" ToRole="HistoriaClinica" />
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <Association Name="fk_persona_usuario">
           <End Type="UMSernaSotomayorModel.Persona" Role="Persona" Multiplicity="1" />
           <End Type="UMSernaSotomayorModel.Usuario" Role="Usuario" Multiplicity="*" />
@@ -1476,18 +1458,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
             </Principal>
             <Dependent Role="MedicoEspecialidad">
               <PropertyRef Name="IdEspecialidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_HistoriaClinica_ExploracionFisica">
-          <End Type="UMSernaSotomayorModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="1" />
-          <End Type="UMSernaSotomayorModel.ExploracionFisica" Role="ExploracionFisica" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HistoriaClinica">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ExploracionFisica">
-              <PropertyRef Name="IdHistoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1532,6 +1502,34 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="NotaEvolutiva">
+              <PropertyRef Name="IdHistoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ExploracionFisica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdHistoria" Type="Int32" Nullable="false" />
+          <Property Name="TA" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pulso" Type="Int32" />
+          <Property Name="FR" Type="Int32" />
+          <Property Name="FC" Type="Int32" />
+          <Property Name="Temp" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Estatura" Type="Int32" />
+          <Property Name="Peso" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Texto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HistoriaClinica" Relationship="UMSernaSotomayorModel.fk_HistoriaClinica_ExploracionFisica" FromRole="ExploracionFisica" ToRole="HistoriaClinica" />
+        </EntityType>
+        <Association Name="fk_HistoriaClinica_ExploracionFisica">
+          <End Type="UMSernaSotomayorModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="1" />
+          <End Type="UMSernaSotomayorModel.ExploracionFisica" Role="ExploracionFisica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoriaClinica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExploracionFisica">
               <PropertyRef Name="IdHistoria" />
             </Dependent>
           </ReferentialConstraint>
@@ -1758,10 +1756,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NotaEvolutivas">
+            <EntityTypeMapping TypeName="UMSernaSotomayorModel.NotaEvolutiva">
+              <MappingFragment StoreEntitySet="NotaEvolutiva">
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ExploracionFisicas">
             <EntityTypeMapping TypeName="UMSernaSotomayorModel.ExploracionFisica">
               <MappingFragment StoreEntitySet="ExploracionFisica">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Texto" ColumnName="Texto" />
                 <ScalarProperty Name="Peso" ColumnName="Peso" />
                 <ScalarProperty Name="Estatura" ColumnName="Estatura" />
@@ -1770,14 +1776,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\EFSERN\SOURCE\REPOS\SERNASOTOMAYOR\
                 <ScalarProperty Name="FR" ColumnName="FR" />
                 <ScalarProperty Name="Pulso" ColumnName="Pulso" />
                 <ScalarProperty Name="TA" ColumnName="TA" />
-                <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NotaEvolutivas">
-            <EntityTypeMapping TypeName="UMSernaSotomayorModel.NotaEvolutiva">
-              <MappingFragment StoreEntitySet="NotaEvolutiva">
-                <ScalarProperty Name="Texto" ColumnName="Texto" />
                 <ScalarProperty Name="IdHistoria" ColumnName="IdHistoria" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
